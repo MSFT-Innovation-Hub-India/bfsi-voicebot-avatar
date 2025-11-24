@@ -22,6 +22,9 @@ except ImportError:  # pragma: no cover - older websockets versions
 
 from dotenv import load_dotenv
 
+# Import sentiment analyzer
+from sentiment_analyzer import analyze_sentiment
+
 logger = logging.getLogger(__name__)
 
 # Ensure .env from backend root is loaded when module is imported
@@ -55,6 +58,7 @@ class VoiceLiveSession:
         self._avatar_connected = False  # Track avatar connection state
         self._current_detected_language = None  # Track automatically detected language
         self._language_detection_confidence = 0.0  # Confidence score for language detection
+        self._conversation_history = []  # Store conversation for summary generation
 
         # Configuration from environment variables
         self._endpoint = os.getenv("AZURE_VOICE_LIVE_ENDPOINT")
@@ -351,6 +355,23 @@ class VoiceLiveSession:
             self.ws = None
             self._connected_event.clear()
             logger.info("[%s] Disconnected session", self.session_id)
+    
+    def get_transcript(self) -> str:
+        """
+        Get the full conversation transcript as formatted text
+        
+        Returns:
+            Formatted transcript with User/Assistant labels
+        """
+        if not self._conversation_history:
+            return ""
+        
+        lines = []
+        for msg in self._conversation_history:
+            role = "User" if msg["role"] == "user" else "Agent"
+            lines.append(f"{role}: {msg['content']}")
+        
+        return "\n\n".join(lines)
 
     async def _send(
         self,
@@ -374,6 +395,21 @@ class VoiceLiveSession:
     @staticmethod
     def _generate_id(prefix: str) -> str:
         return f"{prefix}{int(dt.datetime.utcnow().timestamp() * 1000)}"
+    
+    def get_transcript(self) -> str:
+        """
+        Get the full conversation transcript formatted for summary generation.
+        Returns a formatted string with user and assistant messages.
+        """
+        if not self._conversation_history:
+            return ""
+        
+        transcript_lines = []
+        for msg in self._conversation_history:
+            role = "Customer" if msg["role"] == "user" else "Agent"
+            transcript_lines.append(f"{role}: {msg['content']}")
+        
+        return "\n\n".join(transcript_lines)
 
     @staticmethod
     def _encode_client_sdp(client_sdp: str) -> str:
@@ -729,19 +765,36 @@ class VoiceLiveSession:
                         }
                     )
                 elif event_type == "response.audio_transcript.done":
+                    transcript = event.get("transcript", "")
+                    
+                    # Store assistant message in conversation history
+                    if transcript and len(transcript.strip()) > 0:
+                        self._conversation_history.append({
+                            "role": "assistant",
+                            "content": transcript
+                        })
+                    
                     await self._broadcast(
                         {
                             "type": "assistant_transcript_done",
-                            "transcript": event.get("transcript"),
+                            "transcript": transcript,
                             "item_id": event.get("item_id"),
                         }
                     )
                 elif event_type == "conversation.item.input_audio_transcription.completed":
+                    transcript = event.get("transcript", "")
                     transcript_data = {
                         "type": "user_transcript_completed",
-                        "transcript": event.get("transcript"),
+                        "transcript": transcript,
                         "item_id": event.get("item_id"),
                     }
+                    
+                    # Store user message in conversation history
+                    if transcript and len(transcript.strip()) > 0:
+                        self._conversation_history.append({
+                            "role": "user",
+                            "content": transcript
+                        })
                     
                     # 🌍 Handle automatic language detection
                     detected_language = event.get("detected_language")
@@ -751,6 +804,23 @@ class VoiceLiveSession:
                         await self._handle_language_detection(detected_language, language_confidence)
                         transcript_data["detected_language"] = detected_language
                         transcript_data["language_confidence"] = language_confidence
+                    
+                    # 😊 Perform sentiment analysis on user transcript
+                    if transcript and len(transcript.strip()) > 0:
+                        try:
+                            sentiment_result = await analyze_sentiment(transcript)
+                            transcript_data["sentiment"] = sentiment_result
+                            logger.info(
+                                "[%s] Sentiment: %s (%s) | Emotion: %s (%s) %s",
+                                self.session_id,
+                                sentiment_result.get("sentiment", "unknown"),
+                                sentiment_result.get("sentiment_score", 0),
+                                sentiment_result.get("emotion", "unknown"),
+                                sentiment_result.get("emotion_score", 0),
+                                sentiment_result.get("emoji", "")
+                            )
+                        except Exception as e:
+                            logger.warning("[%s] Sentiment analysis failed: %s", self.session_id, str(e))
                     
                     await self._broadcast(transcript_data)
                 elif event_type == "input_audio_buffer.speech_started":

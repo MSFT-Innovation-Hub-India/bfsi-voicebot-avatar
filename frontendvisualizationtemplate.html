@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Agent Management Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr 420px;
+            height: 100vh;
+            gap: 0;
+        }
+
+        /* Left Panel - Bot Management */
+        .left-panel {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border-right: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .panel-header {
+            padding: 24px;
+            border-bottom: 1px solid #334155;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #60a5fa;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .create-agent-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .create-agent-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .agents-list {
+            padding: 16px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .agent-card {
+            background: rgba(51, 65, 85, 0.4);
+            border: 1px solid #475569;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .agent-card:hover {
+            background: rgba(51, 65, 85, 0.6);
+            border-color: #60a5fa;
+            transform: translateX(4px);
+        }
+
+        .agent-card.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%);
+            border-color: #3b82f6;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+
+        .agent-model {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .agent-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid #22c55e;
+        }
+
+        .status-inactive {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+            border: 1px solid #64748b;
+        }
+
+        /* Center Panel - Conversation Area */
+        .center-panel {
+            display: flex;
+            flex-direction: column;
+            background: #0f172a;
+        }
+
+        .top-bar {
+            padding: 20px 32px;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .session-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .session-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid #22c55e;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .conversation-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .participants-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .participant-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .participant-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .participant-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .participant-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .speaking-indicator {
+            margin-left: auto;
+            color: #22c55e;
+            font-size: 18px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .transcript-content {
+            min-height: 80px;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 10px;
+            border-left: 3px solid #3b82f6;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .transcript-placeholder {
+            color: #64748b;
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .transcript-text {
+            color: #e2e8f0;
+        }
+
+        .transcript-streaming {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #22c55e;
+        }
+
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .timestamp {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .chat-history {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .chat-header {
+            padding: 16px 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .history-toggle {
+            padding: 6px 14px;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
+            border-radius: 6px;
+            color: #60a5fa;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .history-toggle:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .messages-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            max-width: 85%;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .message.assistant .message-avatar {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant .message-bubble {
+            background: rgba(51, 65, 85, 0.6);
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            border-bottom-left-radius: 4px;
+        }
+
+        .input-area {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-top: 1px solid #334155;
+        }
+
+        .voice-control {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .voice-btn {
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(239, 68, 68, 0.5);
+        }
+
+        .voice-btn.recording {
+            animation: pulse-record 1.5s infinite;
+        }
+
+        @keyframes pulse-record {
+            0%, 100% { box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4); }
+            50% { box-shadow: 0 4px 32px rgba(239, 68, 68, 0.8); }
+        }
+
+        .text-input-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        .text-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .text-input:focus {
+            border-color: #3b82f6;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .text-input::placeholder {
+            color: #64748b;
+        }
+
+        .send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Right Panel - Configuration */
+        .right-panel {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border-left: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .config-section {
+            padding: 24px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .config-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .config-item {
+            margin-bottom: 16px;
+        }
+
+        .config-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .config-input, .config-select, .config-textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .config-input:focus, .config-select:focus, .config-textarea:focus {
+            border-color: #3b82f6;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .config-textarea {
+            resize: vertical;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 80px;
+        }
+
+        .config-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(51, 65, 85, 0.4);
+            border: 1px solid #475569;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .config-toggle:hover {
+            background: rgba(51, 65, 85, 0.6);
+            border-color: #3b82f6;
+        }
+
+        .toggle-switch {
+            width: 48px;
+            height: 24px;
+            background: #475569;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #3b82f6;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active::after {
+            left: 26px;
+        }
+
+        .range-input {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .range-value {
+            text-align: right;
+            color: #60a5fa;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .action-buttons {
+            padding: 24px;
+            display: flex;
+            gap: 12px;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .container {
+                grid-template-columns: 280px 1fr 380px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Bot Management -->
+        <div class="left-panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    🤖 BOT MANAGEMENT
+                </div>
+                <button class="create-agent-btn">
+                    ➕ Create New Agent
+                </button>
+            </div>
+            <div class="agents-list">
+                <div class="agent-card active">
+                    <div class="agent-name">Customer Support Bot</div>
+                    <div class="agent-model">gpt-4o-realtime-preview</div>
+                    <span class="agent-status status-active">● Active</span>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-name">Sales Assistant</div>
+                    <div class="agent-model">gpt-4o-realtime</div>
+                    <span class="agent-status status-inactive">● Inactive</span>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-name">Technical Support</div>
+                    <div class="agent-model">gpt-4o-realtime-preview</div>
+                    <span class="agent-status status-inactive">● Inactive</span>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-name">Appointment Scheduler</div>
+                    <div class="agent-model">gpt-4o-realtime</div>
+                    <span class="agent-status status-inactive">● Inactive</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Conversation Area -->
+        <div class="center-panel">
+            <div class="top-bar">
+                <div class="session-info">
+                    <h1 style="font-size: 24px; font-weight: 700; color: #60a5fa;">Voice Agent Platform</h1>
+                </div>
+                <div class="session-status">
+                    <span class="status-dot"></span>
+                    <span>Session Active</span>
+                </div>
+            </div>
+
+            <div class="conversation-area">
+                <!-- Participants Row -->
+                <div class="participants-row">
+                    <!-- User Transcript -->
+                    <div class="participant-box">
+                        <div class="participant-header">
+                            <div class="participant-icon">👤</div>
+                            <div class="participant-label">User</div>
+                        </div>
+                        <div class="transcript-content">
+                            <div class="transcript-text">
+                                Hello, I need help with my recent order. It hasn't arrived yet and I'm getting worried.
+                            </div>
+                            <div class="timestamp">2:45:23 PM</div>
+                        </div>
+                    </div>
+
+                    <!-- Avatar Transcript -->
+                    <div class="participant-box">
+                        <div class="participant-header">
+                            <div class="participant-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">🤖</div>
+                            <div class="participant-label">Avatar</div>
+                            <div class="speaking-indicator">🔊</div>
+                        </div>
+                        <div class="transcript-content transcript-streaming">
+                            <div class="transcript-text">
+                                I understand your concern. Let me check your order status for you right away. Could you please provide me with your order number<span class="cursor-blink">|</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat History -->
+                <div class="chat-history">
+                    <div class="chat-header">
+                        <div class="chat-title">
+                            💬 Conversation History
+                        </div>
+                        <button class="history-toggle">📜 Full History</button>
+                    </div>
+                    <div class="messages-container">
+                        <div class="message assistant">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-bubble">
+                                Hello! Welcome to our customer support. How can I assist you today?
+                            </div>
+                        </div>
+                        <div class="message user">
+                            <div class="message-avatar">👤</div>
+                            <div class="message-bubble">
+                                Hi, I'm having an issue with my account login.
+                            </div>
+                        </div>
+                        <div class="message assistant">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-bubble">
+                                I'd be happy to help you with your login issue. Could you tell me what specific problem you're experiencing? Are you getting an error message?
+                            </div>
+                        </div>
+                        <div class="message user">
+                            <div class="message-avatar">👤</div>
+                            <div class="message-bubble">
+                                Actually, I resolved that. Now I need help with my recent order.
+                            </div>
+                        </div>
+                        <div class="message assistant">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-bubble">
+                                Great! I'm glad your login issue is resolved. I'll help you with your order now.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-area">
+                        <div class="voice-control">
+                            <button class="voice-btn recording">
+                                <span>⏺</span>
+                                <span>Recording...</span>
+                            </button>
+                        </div>
+                        <div class="text-input-area">
+                            <input type="text" class="text-input" placeholder="Type your message...">
+                            <button class="send-btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Configuration -->
+        <div class="right-panel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    ⚙️ CONFIGURATION
+                </div>
+            </div>
+
+            <!-- Bot Management Section -->
+            <div class="config-section">
+                <div class="config-section-title">
+                    🎯 Bot Management
+                </div>
+                <div class="config-toggle">
+                    <span style="font-size: 13px; font-weight: 500;">Deployable SaaS</span>
+                    <div class="toggle-switch active"></div>
+                </div>
+                <div class="config-toggle">
+                    <span style="font-size: 13px; font-weight: 500;">Policy Based Customer Support</span>
+                    <div class="toggle-switch active"></div>
+                </div>
+            </div>
+
+            <!-- GPT Configuration -->
+            <div class="config-section">
+                <div class="config-section-title">
+                    🧠 GPT as Realtime
+                </div>
+                <div class="config-toggle" style="margin-bottom: 16px;">
+                    <span style="font-size: 13px; font-weight: 500;">Enable GPT Realtime</span>
+                    <div class="toggle-switch active"></div>
+                </div>
+                <div class="config-item">
+                    <label class="config-label">Model</label>
+                    <input type="text" class="config-input" value="gpt-4o-realtime" readonly>
+                </div>
+                <div class="config-item">
+                    <label class="config-label">GPT Realtime Version</label>
+                    <select class="config-select">
+                        <option>gpt-4o-realtime-preview-2024-12-17</option>
+                        <option>gpt-4o-realtime-preview-2024-10-01</option>
+                    </select>
+                </div>
+                <div class="config-item">
+                    <label class="config-label">Temperature</label>
+                    <input type="range" class="range-input" min="0" max="1" step="0.1" value="0.8">
+                    <div class="range-value">0.8</div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="config-section">
+                <div class="config-section-title">
+                    📝 Instructions
+                </div>
+                <div class="config-item">
+                    <label class="config-label">System Instructions</label>
+                    <textarea class="config-textarea" placeholder="Enter system instructions for the AI agent...">Help the user by calling the GetAutopilotProfile function. If customer_id is found, call to GetVehicleIds. If customer_id is not found, politely ask for it.</textarea>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="config-section">
+                <div class="config-section-title">
+                    🛠️ Tools
+                </div>
+                <div class="config-toggle">
+                    <span style="font-size: 13px; font-weight: 500;">Function Calling (HTRC)</span>
+                    <div class="toggle-switch active"></div>
+                </div>
+                <div class="config-toggle">
+                    <span style="font-size: 13px; font-weight: 500;">Knowledge Retrieval (Azure AI)</span>
+                    <div class="toggle-switch"></div>
+                </div>
+            </div>
+
+            <!-- TTS & STT -->
+            <div class="config-section">
+                <div class="config-section-title">
+                    🎙️ Voice Settings
+                </div>
+                <div class="config-item">
+                    <label class="config-label">Text-to-Speech (TTS)</label>
+                    <select class="config-select">
+                        <option>alloy</option>
+                        <option>echo</option>

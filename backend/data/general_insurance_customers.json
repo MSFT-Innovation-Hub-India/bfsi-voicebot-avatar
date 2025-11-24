@@ -1,0 +1,234 @@
+{
+  "customers": [
+    {
+      "customer_id": "GTI-GEN-001",
+      "personal_info": {
+        "first_name": "Arjun",
+        "last_name": "Mehta",
+        "date_of_birth": "1983-04-12",
+        "phone": "+91-9123456789",
+        "email": "arjun.mehta@gmail.com",
+        "address": {
+          "line1": "C-301, Royal Garden",
+          "line2": "Malad East",
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "pincode": "400097"
+        },
+        "pan_number": "ABCDE1234F",
+        "aadhar_number": "1111-2222-3333"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-HI-2024-001",
+          "policy_type": "Health Insurance",
+          "product_name": "Global Trust Health Plus",
+          "sum_insured": 500000,
+          "annual_premium": 18500,
+          "start_date": "2024-01-15",
+          "end_date": "2025-01-15",
+          "status": "Active",
+          "next_premium_due": "2025-01-15",
+          "family_members": [
+            {"name": "Arjun Mehta", "age": 41, "relation": "Self"},
+            {"name": "Kavita Mehta", "age": 38, "relation": "Spouse"},
+            {"name": "Aarav Mehta", "age": 12, "relation": "Son"}
+          ]
+        },
+        {
+          "policy_number": "GTI-HO-2023-001",
+          "policy_type": "Home Insurance",
+          "product_name": "Global Trust Home Shield",
+          "sum_insured": 2500000,
+          "annual_premium": 12000,
+          "start_date": "2023-06-01",
+          "end_date": "2025-06-01",
+          "status": "Active",
+          "next_premium_due": "2025-06-01",
+          "property_details": {
+            "property_type": "Apartment",
+            "area_sqft": 1200,
+            "construction_year": 2018,
+            "address": "C-301, Royal Garden, Malad East, Mumbai"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "claim_number": "GTI-CLM-2024-001",
+          "policy_number": "GTI-HI-2024-001",
+          "claim_type": "Health",
+          "incident_date": "2024-08-15",
+          "claim_amount": 45000,
+          "approved_amount": 42000,
+          "status": "Settled",
+          "settlement_date": "2024-09-10",
+          "description": "Hospitalization for appendectomy"
+        }
+      ],
+      "premium_history": [
+        {
+          "policy_number": "GTI-HI-2024-001",
+          "payment_date": "2024-01-15",
+          "amount": 18500,
+          "payment_method": "Online",
+          "status": "Paid"
+        },
+        {
+          "policy_number": "GTI-HO-2023-001",
+          "payment_date": "2024-06-01",
+          "amount": 12000,
+          "payment_method": "Cheque",
+          "status": "Paid"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTI-GEN-002",
+      "personal_info": {
+        "first_name": "Meera",
+        "last_name": "Joshi",
+        "date_of_birth": "1991-11-30",
+        "phone": "+91-8234567890",
+        "email": "meera.joshi@yahoo.com",
+        "address": {
+          "line1": "Flat 205, Sunrise Apartments",
+          "line2": "Whitefield",
+          "city": "Bangalore",
+          "state": "Karnataka",
+          "pincode": "560066"
+        },
+        "pan_number": "FGHIJ5678K",
+        "aadhar_number": "4444-5555-6666"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-HI-2024-002",
+          "policy_type": "Health Insurance",
+          "product_name": "Global Trust Health Premium",
+          "sum_insured": 300000,
+          "annual_premium": 12000,
+          "start_date": "2024-03-10",
+          "end_date": "2025-03-10",
+          "status": "Active",
+          "next_premium_due": "2025-03-10",
+          "family_members": [
+            {"name": "Meera Joshi", "age": 33, "relation": "Self"}
+          ]
+        },
+        {
+          "policy_number": "GTI-TR-2024-001",
+          "policy_type": "Travel Insurance",
+          "product_name": "Global Trust International Travel",
+          "sum_insured": 1000000,
+          "premium": 3500,
+          "start_date": "2024-12-01",
+          "end_date": "2024-12-15",
+          "status": "Active",
+          "destination": "Thailand",
+          "trip_duration": 14
+        }
+      ],
+      "claims": [],
+      "premium_history": [
+        {
+          "policy_number": "GTI-HI-2024-002",
+          "payment_date": "2024-03-10",
+          "amount": 12000,
+          "payment_method": "UPI",
+          "status": "Paid"
+        },
+        {
+          "policy_number": "GTI-TR-2024-001",
+          "payment_date": "2024-11-25",
+          "amount": 3500,
+          "payment_method": "Credit Card",
+          "status": "Paid"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTI-GEN-003",
+      "personal_info": {
+        "first_name": "Ravi",
+        "last_name": "Gupta",
+        "date_of_birth": "1979-07-08",
+        "phone": "+91-7345678901",
+        "email": "ravi.gupta@rediffmail.com",
+        "address": {
+          "line1": "B-12, Green City",
+          "line2": "Sector 62",
+          "city": "Gurgaon",
+          "state": "Haryana",
+          "pincode": "122001"
+        },
+        "pan_number": "KLMNO9012P",
+        "aadhar_number": "7777-8888-9999"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-HI-2023-003",
+          "policy_type": "Health Insurance",
+          "product_name": "Global Trust Family Health",
+          "sum_insured": 800000,
+          "annual_premium": 28000,
+          "start_date": "2023-05-20",
+          "end_date": "2025-05-20",
+          "status": "Active",
+          "next_premium_due": "2025-05-20",
+          "family_members": [
+            {"name": "Ravi Gupta", "age": 45, "relation": "Self"},
+            {"name": "Pooja Gupta", "age": 42, "relation": "Spouse"},
+            {"name": "Rohit Gupta", "age": 18, "relation": "Son"},
+            {"name": "Priya Gupta", "age": 15, "relation": "Daughter"}
+          ]
+        },
+        {
+          "policy_number": "GTI-HO-2022-003",
+          "policy_type": "Home Insurance",
+          "product_name": "Global Trust Home Comprehensive",
+          "sum_insured": 4000000,
+          "annual_premium": 18000,
+          "start_date": "2022-08-15",
+          "end_date": "2025-08-15",
+          "status": "Active",
+          "next_premium_due": "2025-08-15",
+          "property_details": {
+            "property_type": "Independent House",
+            "area_sqft": 2400,
+            "construction_year": 2015,
+            "address": "B-12, Green City, Sector 62, Gurgaon"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "claim_number": "GTI-CLM-2024-002",
+          "policy_number": "GTI-HO-2022-003",
+          "claim_type": "Home",
+          "incident_date": "2024-07-20",
+          "claim_amount": 85000,
+          "approved_amount": 75000,
+          "status": "Under Process",
+          "description": "Water damage due to pipe burst in bathroom"
+        }
+      ],
+      "premium_history": [
+        {
+          "policy_number": "GTI-HI-2023-003",
+          "payment_date": "2024-05-20",
+          "amount": 28000,
+          "payment_method": "Auto Debit",
+          "status": "Paid"
+        },
+        {
+          "policy_number": "GTI-HO-2022-003",
+          "payment_date": "2024-08-15",
+          "amount": 18000,
+          "payment_method": "Auto Debit",
+          "status": "Paid"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "customers": [
+    {
+      "customer_id": "GTI-LIFE-001",
+      "personal_info": {
+        "first_name": "Deepak",
+        "last_name": "Agarwal",
+        "date_of_birth": "1980-02-14",
+        "phone": "+91-9456789012",
+        "email": "deepak.agarwal@gmail.com",
+        "address": {
+          "line1": "402, Nilgiri Apartments",
+          "line2": "Vaishali",
+          "city": "Ghaziabad",
+          "state": "Uttar Pradesh",
+          "pincode": "201010"
+        },
+        "pan_number": "PQRST3456U",
+        "aadhar_number": "1010-2020-3030"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-LI-2020-001",
+          "policy_type": "Term Life Insurance",
+          "product_name": "Global Trust Term Plus",
+          "sum_assured": 5000000,
+          "annual_premium": 45000,
+          "policy_start_date": "2020-02-14",
+          "policy_maturity_date": "2050-02-14",
+          "status": "Active",
+          "next_premium_due": "2025-02-14",
+          "premium_payment_term": 30,
+          "policy_term": 30,
+          "beneficiaries": [
+            {"name": "Sonal Agarwal", "relation": "Spouse", "percentage": 60},
+            {"name": "Aryan Agarwal", "relation": "Son", "percentage": 40}
+          ]
+        },
+        {
+          "policy_number": "GTI-ULIP-2021-001",
+          "policy_type": "ULIP",
+          "product_name": "Global Trust Wealth Builder",
+          "sum_assured": 1000000,
+          "annual_premium": 100000,
+          "policy_start_date": "2021-06-15",
+          "policy_maturity_date": "2041-06-15",
+          "status": "Active",
+          "next_premium_due": "2025-06-15",
+          "fund_value": 385000,
+          "policy_term": 20,
+          "premium_payment_term": 10
+        }
+      ],
+      "claims": [],
+      "premium_history": [
+        {
+          "policy_number": "GTI-LI-2020-001",
+          "payment_date": "2024-02-14",
+          "amount": 45000,
+          "payment_method": "Auto Debit",
+          "status": "Paid"
+        },
+        {
+          "policy_number": "GTI-ULIP-2021-001",
+          "payment_date": "2024-06-15",
+          "amount": 100000,
+          "payment_method": "Auto Debit",
+          "status": "Paid"
+        }
+      ],
+      "nominees": [
+        {
+          "name": "Sonal Agarwal",
+          "relation": "Spouse",
+          "date_of_birth": "1985-08-20",
+          "phone": "+91-9456789013"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTI-LIFE-002",
+      "personal_info": {
+        "first_name": "Anita",
+        "last_name": "Kapoor",
+        "date_of_birth": "1987-09-05",
+        "phone": "+91-8567890123",
+        "email": "anita.kapoor@yahoo.in",
+        "address": {
+          "line1": "301, Silver Oak",
+          "line2": "Bandra West",
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "pincode": "400050"
+        },
+        "pan_number": "UVWXY7890Z",
+        "aadhar_number": "4040-5050-6060"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-WLI-2022-001",
+          "policy_type": "Whole Life Insurance",
+          "product_name": "Global Trust Life Shield",
+          "sum_assured": 2500000,
+          "annual_premium": 75000,
+          "policy_start_date": "2022-09-05",
+          "policy_maturity_date": "2087-09-05",
+          "status": "Active",
+          "next_premium_due": "2025-09-05",
+          "cash_value": 156000,
+          "premium_payment_term": 20,
+          "policy_term": 65,
+          "beneficiaries": [
+            {"name": "Rohit Kapoor", "relation": "Spouse", "percentage": 70},
+            {"name": "Isha Kapoor", "relation": "Daughter", "percentage": 30}
+          ]
+        }
+      ],
+      "claims": [],
+      "premium_history": [
+        {
+          "policy_number": "GTI-WLI-2022-001",
+          "payment_date": "2024-09-05",
+          "amount": 75000,
+          "payment_method": "Online",
+          "status": "Paid"
+        }
+      ],
+      "nominees": [
+        {
+          "name": "Rohit Kapoor",
+          "relation": "Spouse",
+          "date_of_birth": "1983-04-12",
+          "phone": "+91-8567890124"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTI-LIFE-003",
+      "personal_info": {
+        "first_name": "Suresh",
+        "last_name": "Iyer",
+        "date_of_birth": "1975-12-18",
+        "phone": "+91-7678901234",
+        "email": "suresh.iyer@hotmail.com",
+        "address": {
+          "line1": "15, Temple Street",
+          "line2": "T. Nagar",
+          "city": "Chennai",
+          "state": "Tamil Nadu",
+          "pincode": "600017"
+        },
+        "pan_number": "ABCDE9876F",
+        "aadhar_number": "7070-8080-9090"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-ELI-2018-001",
+          "policy_type": "Endowment Life Insurance",
+          "product_name": "Global Trust Endowment Plus",
+          "sum_assured": 1500000,
+          "annual_premium": 85000,
+          "policy_start_date": "2018-12-18",
+          "policy_maturity_date": "2038-12-18",
+          "status": "Active",
+          "next_premium_due": "2025-12-18",
+          "maturity_value": 2100000,
+          "premium_payment_term": 15,
+          "policy_term": 20,
+          "beneficiaries": [
+            {"name": "Lakshmi Iyer", "relation": "Spouse", "percentage": 50},
+            {"name": "Karthik Iyer", "relation": "Son", "percentage": 50}
+          ]
+        },
+        {
+          "policy_number": "GTI-PEN-2023-001",
+          "policy_type": "Pension Plan",
+          "product_name": "Global Trust Retirement Plus",
+          "sum_assured": 500000,
+          "annual_premium": 60000,
+          "policy_start_date": "2023-01-01",
+          "vesting_age": 60,
+          "status": "Active",
+          "next_premium_due": "2025-01-01",
+          "fund_value": 125000,
+          "premium_payment_term": 10
+        }
+      ],
+      "claims": [],
+      "premium_history": [
+        {
+          "policy_number": "GTI-ELI-2018-001",
+          "payment_date": "2024-12-18",
+          "amount": 85000,
+          "payment_method": "Cheque",
+          "status": "Paid"
+        },
+        {
+          "policy_number": "GTI-PEN-2023-001",
+          "payment_date": "2024-01-01",
+          "amount": 60000,
+          "payment_method": "Auto Debit",
+          "status": "Paid"
+        }
+      ],
+      "nominees": [
+        {
+          "name": "Lakshmi Iyer",
+          "relation": "Spouse",
+          "date_of_birth": "1978-05-22",
+          "phone": "+91-7678901235"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTI-LIFE-004",
+      "personal_info": {
+        "first_name": "Kavita",
+        "last_name": "Nair",
+        "date_of_birth": "1992-03-25",
+        "phone": "+91-6789012345",
+        "email": "kavita.nair@gmail.com",
+        "address": {
+          "line1": "204, Lotus Residency",
+          "line2": "Kochi",
+          "city": "Kochi",
+          "state": "Kerala",
+          "pincode": "682025"
+        },
+        "pan_number": "FGHIJ2345K",
+        "aadhar_number": "1212-3434-5656"
+      },
+      "policies": [
+        {
+          "policy_number": "GTI-TLI-2024-001",
+          "policy_type": "Term Life Insurance",
+          "product_name": "Global Trust Young Professional",
+          "sum_assured": 3000000,
+          "annual_premium": 18000,
+          "policy_start_date": "2024-03-25",
+          "policy_maturity_date": "2054-03-25",
+          "status": "Active",
+          "next_premium_due": "2025-03-25",
+          "premium_payment_term": 25,
+          "policy_term": 30,
+          "beneficiaries": [
+            {"name": "Rajeev Nair", "relation": "Father", "percentage": 60},
+            {"name": "Sita Nair", "relation": "Mother", "percentage": 40}
+          ]
+        }
+      ],
+      "claims": [],
+      "premium_history": [
+        {
+          "policy_number": "GTI-TLI-2024-001",
+          "payment_date": "2024-03-25",
+          "amount": 18000,
+          "payment_method": "UPI",
+          "status": "Paid"
+        }
+      ],
+      "nominees": [
+        {
+          "name": "Rajeev Nair",
+          "relation": "Father",
+          "date_of_birth": "1965-07-10",
+          "phone": "+91-6789012346"
+        }
+      ]
+    }
+  ]
+}

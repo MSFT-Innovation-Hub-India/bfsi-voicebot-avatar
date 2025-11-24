@@ -1,0 +1,351 @@
+{
+  "customers": [
+    {
+      "customer_id": "GTB001",
+      "personal_info": {
+        "first_name": "Rajesh",
+        "last_name": "Sharma",
+        "date_of_birth": "1985-03-15",
+        "phone": "+91-9876543210",
+        "email": "rajesh.sharma@gmail.com",
+        "address": {
+          "line1": "A-402, Golden Heights",
+          "line2": "Sector 18, Noida",
+          "city": "Noida",
+          "state": "Uttar Pradesh",
+          "pincode": "201301"
+        },
+        "pan_number": "ABCDE1234F",
+        "aadhar_number": "1234-5678-9012"
+      },
+      "accounts": [
+        {
+          "account_number": "GTB123456789",
+          "account_type": "Savings",
+          "balance": 125000.50,
+          "branch": "Noida Sector 18",
+          "ifsc_code": "GTB0001234",
+          "opening_date": "2018-06-15",
+          "status": "Active"
+        },
+        {
+          "account_number": "GTB123456790",
+          "account_type": "Current",
+          "balance": 450000.00,
+          "branch": "Noida Sector 18",
+          "ifsc_code": "GTB0001234",
+          "opening_date": "2020-02-10",
+          "status": "Active"
+        }
+      ],
+      "loans": [
+        {
+          "loan_id": "GTB-HL-001",
+          "loan_type": "Home Loan",
+          "principal_amount": 5000000,
+          "outstanding_amount": 3200000,
+          "interest_rate": 8.5,
+          "tenure_months": 240,
+          "emi": 42912,
+          "next_due_date": "2025-11-15",
+          "status": "Active"
+        }
+      ],
+      "credit_cards": [
+        {
+          "card_number": "****-****-****-1234",
+          "card_type": "Platinum",
+          "credit_limit": 300000,
+          "outstanding_balance": 45000,
+          "due_date": "2025-11-20",
+          "minimum_due": 2250,
+          "status": "Active"
+        }
+      ],
+      "recent_transactions": [
+        {
+          "transaction_id": "TXN001",
+          "date": "2025-11-03",
+          "description": "UPI Transfer to Priya Sharma",
+          "amount": -5000,
+          "balance": 125000.50,
+          "type": "Debit"
+        },
+        {
+          "transaction_id": "TXN002",
+          "date": "2025-11-02",
+          "description": "Salary Credit",
+          "amount": 75000,
+          "balance": 130000.50,
+          "type": "Credit"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTB002",
+      "personal_info": {
+        "first_name": "Priya",
+        "last_name": "Patel",
+        "date_of_birth": "1990-07-22",
+        "phone": "+91-8765432109",
+        "email": "priya.patel@yahoo.in",
+        "address": {
+          "line1": "204, Shanti Apartments",
+          "line2": "Andheri West",
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "pincode": "400058"
+        },
+        "pan_number": "FGHIJ5678K",
+        "aadhar_number": "2345-6789-0123"
+      },
+      "accounts": [
+        {
+          "account_number": "GTB987654321",
+          "account_type": "Savings",
+          "balance": 87500.25,
+          "branch": "Andheri West",
+          "ifsc_code": "GTB0002345",
+          "opening_date": "2019-09-12",
+          "status": "Active"
+        }
+      ],
+      "loans": [
+        {
+          "loan_id": "GTB-PL-002",
+          "loan_type": "Personal Loan",
+          "principal_amount": 500000,
+          "outstanding_amount": 320000,
+          "interest_rate": 12.5,
+          "tenure_months": 60,
+          "emi": 11122,
+          "next_due_date": "2025-11-10",
+          "status": "Active"
+        }
+      ],
+      "credit_cards": [
+        {
+          "card_number": "****-****-****-5678",
+          "card_type": "Gold",
+          "credit_limit": 150000,
+          "outstanding_balance": 22000,
+          "due_date": "2025-11-25",
+          "minimum_due": 1100,
+          "status": "Active"
+        }
+      ],
+      "recent_transactions": [
+        {
+          "transaction_id": "TXN003",
+          "date": "2025-11-04",
+          "description": "Online Shopping - Amazon",
+          "amount": -12500,
+          "balance": 87500.25,
+          "type": "Debit"
+        },
+        {
+          "transaction_id": "TXN004",
+          "date": "2025-11-01",
+          "description": "Interest Credit",
+          "amount": 350,
+          "balance": 100000.25,
+          "type": "Credit"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTB003",
+      "personal_info": {
+        "first_name": "Amit",
+        "last_name": "Kumar",
+        "date_of_birth": "1982-12-08",
+        "phone": "+91-7654321098",
+        "email": "amit.kumar@rediffmail.com",
+        "address": {
+          "line1": "B-15, Green Valley",
+          "line2": "Koramangala",
+          "city": "Bangalore",
+          "state": "Karnataka",
+          "pincode": "560034"
+        },
+        "pan_number": "KLMNO9012P",
+        "aadhar_number": "3456-7890-1234"
+      },
+      "accounts": [
+        {
+          "account_number": "GTB456789123",
+          "account_type": "Savings",
+          "balance": 256780.00,
+          "branch": "Koramangala",
+          "ifsc_code": "GTB0003456",
+          "opening_date": "2017-04-20",
+          "status": "Active"
+        }
+      ],
+      "loans": [
+        {
+          "loan_id": "GTB-CL-003",
+          "loan_type": "Car Loan",
+          "principal_amount": 800000,
+          "outstanding_amount": 240000,
+          "interest_rate": 9.2,
+          "tenure_months": 84,
+          "emi": 12890,
+          "next_due_date": "2025-11-08",
+          "status": "Active"
+        }
+      ],
+      "credit_cards": [],
+      "recent_transactions": [
+        {
+          "transaction_id": "TXN005",
+          "date": "2025-11-03",
+          "description": "ATM Withdrawal",
+          "amount": -10000,
+          "balance": 256780.00,
+          "type": "Debit"
+        },
+        {
+          "transaction_id": "TXN006",
+          "date": "2025-10-31",
+          "description": "Mutual Fund Investment",
+          "amount": -25000,
+          "balance": 266780.00,
+          "type": "Debit"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTB004",
+      "personal_info": {
+        "first_name": "Sunita",
+        "last_name": "Singh",
+        "date_of_birth": "1975-05-18",
+        "phone": "+91-6543210987",
+        "email": "sunita.singh@hotmail.com",
+        "address": {
+          "line1": "House No. 45",
+          "line2": "Civil Lines",
+          "city": "Delhi",
+          "state": "Delhi",
+          "pincode": "110054"
+        },
+        "pan_number": "PQRST3456U",
+        "aadhar_number": "4567-8901-2345"
+      },
+      "accounts": [
+        {
+          "account_number": "GTB321654987",
+          "account_type": "Savings",
+          "balance": 180000.75,
+          "branch": "Civil Lines Delhi",
+          "ifsc_code": "GTB0004567",
+          "opening_date": "2015-11-30",
+          "status": "Active"
+        }
+      ],
+      "loans": [],
+      "credit_cards": [
+        {
+          "card_number": "****-****-****-9012",
+          "card_type": "Silver",
+          "credit_limit": 100000,
+          "outstanding_balance": 8500,
+          "due_date": "2025-11-18",
+          "minimum_due": 425,
+          "status": "Active"
+        }
+      ],
+      "recent_transactions": [
+        {
+          "transaction_id": "TXN007",
+          "date": "2025-11-04",
+          "description": "Pension Credit",
+          "amount": 18000,
+          "balance": 180000.75,
+          "type": "Credit"
+        },
+        {
+          "transaction_id": "TXN008",
+          "date": "2025-11-02",
+          "description": "Electricity Bill Payment",
+          "amount": -2500,
+          "balance": 162000.75,
+          "type": "Debit"
+        }
+      ]
+    },
+    {
+      "customer_id": "GTB005",
+      "personal_info": {
+        "first_name": "Vikram",
+        "last_name": "Reddy",
+        "date_of_birth": "1988-09-25",
+        "phone": "+91-5432109876",
+        "email": "vikram.reddy@gmail.com",
+        "address": {
+          "line1": "Plot No. 123, Jubilee Hills",
+          "line2": "Hyderabad",
+          "city": "Hyderabad",
+          "state": "Telangana",
+          "pincode": "500033"
+        },
+        "pan_number": "UVWXY7890Z",
+        "aadhar_number": "5678-9012-3456"
+      },
+      "accounts": [
+        {
+          "account_number": "GTB654321098",
+          "account_type": "Savings",
+          "balance": 345600.80,
+          "branch": "Jubilee Hills",
+          "ifsc_code": "GTB0005678",
+          "opening_date": "2020-01-15",
+          "status": "Active"
+        }
+      ],
+      "loans": [
+        {
+          "loan_id": "GTB-BL-005",
+          "loan_type": "Business Loan",
+          "principal_amount": 2000000,
+          "outstanding_amount": 1650000,
+          "interest_rate": 11.0,
+          "tenure_months": 72,
+          "emi": 34500,
+          "next_due_date": "2025-11-12",
+          "status": "Active"
+        }
+      ],
+      "credit_cards": [
+        {
+          "card_number": "****-****-****-3456",
+          "card_type": "Titanium",
+          "credit_limit": 500000,
+          "outstanding_balance": 85000,
+          "due_date": "2025-11-22",
+          "minimum_due": 4250,
+          "status": "Active"
+        }
+      ],
+      "recent_transactions": [
+        {
+          "transaction_id": "TXN009",
+          "date": "2025-11-04",
+          "description": "Business Payment Received",
+          "amount": 125000,
+          "balance": 345600.80,
+          "type": "Credit"
+        },
+        {
+          "transaction_id": "TXN010",
+          "date": "2025-11-03",
+          "description": "Office Rent Payment",
+          "amount": -45000,
+          "balance": 220600.80,
+          "type": "Debit"
+        }
+      ]
+    }
+  ]
+}

@@ -42,3 +42,7 @@ class SessionManager:
         if session:
             await session.disconnect()
             logger.info("Removed session %s", session_id)
+    
+    def get(self, session_id: str) -> VoiceLiveSession | None:
+        """Get a session synchronously (for non-async contexts)"""
+        return self._sessions.get(session_id)

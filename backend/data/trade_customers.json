@@ -1,0 +1,489 @@
+{
+  "customers": [
+    {
+      "customer_id": "GTT-001",
+      "personal_info": {
+        "first_name": "Raghav",
+        "last_name": "Singh",
+        "date_of_birth": "1985-05-12",
+        "phone": "+91-9876543201",
+        "email": "raghav.singh@gmail.com",
+        "address": {
+          "line1": "D-804, Prestige Towers",
+          "line2": "Banjara Hills",
+          "city": "Hyderabad",
+          "state": "Telangana",
+          "pincode": "500034"
+        },
+        "pan_number": "ABCDE1111F",
+        "aadhar_number": "1111-1111-1111"
+      },
+      "trading_account": {
+        "account_number": "GTT123456789",
+        "account_type": "Demat + Trading",
+        "opening_date": "2020-03-15",
+        "status": "Active",
+        "demat_account": "IN301234567890123456",
+        "trading_segment": ["Equity", "F&O", "Commodity"],
+        "available_balance": 485000.75,
+        "margin_available": 125000.00
+      },
+      "portfolio": {
+        "total_value": 1250000.50,
+        "invested_amount": 980000.00,
+        "current_pnl": 270000.50,
+        "unrealized_pnl": 45000.25,
+        "realized_pnl": 225000.25,
+        "holdings": [
+          {
+            "symbol": "RELIANCE",
+            "company_name": "Reliance Industries Ltd",
+            "quantity": 50,
+            "avg_price": 2450.00,
+            "current_price": 2625.50,
+            "invested_value": 122500.00,
+            "current_value": 131275.00,
+            "pnl": 8775.00,
+            "pnl_percentage": 7.16
+          },
+          {
+            "symbol": "TCS",
+            "company_name": "Tata Consultancy Services Ltd",
+            "quantity": 30,
+            "avg_price": 3800.00,
+            "current_price": 4125.75,
+            "invested_value": 114000.00,
+            "current_value": 123772.50,
+            "pnl": 9772.50,
+            "pnl_percentage": 8.57
+          },
+          {
+            "symbol": "INFY",
+            "company_name": "Infosys Ltd",
+            "quantity": 75,
+            "avg_price": 1650.00,
+            "current_price": 1789.25,
+            "invested_value": 123750.00,
+            "current_value": 134193.75,
+            "pnl": 10443.75,
+            "pnl_percentage": 8.44
+          },
+          {
+            "symbol": "HDFCBANK",
+            "company_name": "HDFC Bank Ltd",
+            "quantity": 40,
+            "avg_price": 1580.00,
+            "current_price": 1645.50,
+            "invested_value": 63200.00,
+            "current_value": 65820.00,
+            "pnl": 2620.00,
+            "pnl_percentage": 4.15
+          }
+        ]
+      },
+      "mutual_funds": [
+        {
+          "scheme_name": "SBI Bluechip Fund - Direct Growth",
+          "folio_number": "12345678901",
+          "units": 1250.456,
+          "nav": 85.25,
+          "invested_amount": 100000.00,
+          "current_value": 106601.38,
+          "pnl": 6601.38,
+          "sip_amount": 5000,
+          "sip_date": 15,
+          "sip_status": "Active"
+        },
+        {
+          "scheme_name": "Axis Long Term Equity Fund - Direct Growth",
+          "folio_number": "98765432109",
+          "units": 890.123,
+          "nav": 112.75,
+          "invested_amount": 75000.00,
+          "current_value": 100361.38,
+          "pnl": 25361.38,
+          "sip_amount": 3000,
+          "sip_date": 10,
+          "sip_status": "Active"
+        }
+      ],
+      "trading_history": [
+        {
+          "order_id": "GTT-ORD-001",
+          "symbol": "WIPRO",
+          "transaction_type": "Buy",
+          "quantity": 100,
+          "price": 485.50,
+          "order_value": 48550.00,
+          "order_date": "2024-11-01",
+          "status": "Executed"
+        },
+        {
+          "order_id": "GTT-ORD-002",
+          "symbol": "WIPRO",
+          "transaction_type": "Sell",
+          "quantity": 100,
+          "price": 495.25,
+          "order_value": 49525.00,
+          "order_date": "2024-11-03",
+          "status": "Executed"
+        }
+      ],
+      "watchlist": [
+        {"symbol": "BAJFINANCE", "ltp": 6825.50, "change": 125.75, "change_percent": 1.88},
+        {"symbol": "ASIANPAINT", "ltp": 2950.25, "change": -45.50, "change_percent": -1.52},
+        {"symbol": "MARUTI", "ltp": 11250.00, "change": 89.25, "change_percent": 0.80}
+      ]
+    },
+    {
+      "customer_id": "GTT-002",
+      "personal_info": {
+        "first_name": "Priyanka",
+        "last_name": "Jain",
+        "date_of_birth": "1992-08-18",
+        "phone": "+91-8765432190",
+        "email": "priyanka.jain@yahoo.com",
+        "address": {
+          "line1": "402, Green Park",
+          "line2": "Sector 26",
+          "city": "Gurgaon",
+          "state": "Haryana",
+          "pincode": "122002"
+        },
+        "pan_number": "FGHIJ2222K",
+        "aadhar_number": "2222-2222-2222"
+      },
+      "trading_account": {
+        "account_number": "GTT987654321",
+        "account_type": "Demat + Trading",
+        "opening_date": "2021-07-22",
+        "status": "Active",
+        "demat_account": "IN301987654321098765",
+        "trading_segment": ["Equity", "ETF"],
+        "available_balance": 125000.00,
+        "margin_available": 0.00
+      },
+      "portfolio": {
+        "total_value": 385000.25,
+        "invested_amount": 320000.00,
+        "current_pnl": 65000.25,
+        "unrealized_pnl": 12000.50,
+        "realized_pnl": 53000.75,
+        "holdings": [
+          {
+            "symbol": "ICICIBANK",
+            "company_name": "ICICI Bank Ltd",
+            "quantity": 80,
+            "avg_price": 985.00,
+            "current_price": 1125.75,
+            "invested_value": 78800.00,
+            "current_value": 90060.00,
+            "pnl": 11260.00,
+            "pnl_percentage": 14.29
+          },
+          {
+            "symbol": "LT",
+            "company_name": "Larsen & Toubro Ltd",
+            "quantity": 25,
+            "avg_price": 3200.00,
+            "current_price": 3485.50,
+            "invested_value": 80000.00,
+            "current_value": 87137.50,
+            "pnl": 7137.50,
+            "pnl_percentage": 8.92
+          }
+        ]
+      },
+      "mutual_funds": [
+        {
+          "scheme_name": "HDFC Index Fund Nifty 50 - Direct Growth",
+          "folio_number": "11111111111",
+          "units": 2500.789,
+          "nav": 42.85,
+          "invested_amount": 100000.00,
+          "current_value": 107158.31,
+          "pnl": 7158.31,
+          "sip_amount": 10000,
+          "sip_date": 5,
+          "sip_status": "Active"
+        }
+      ],
+      "trading_history": [
+        {
+          "order_id": "GTT-ORD-003",
+          "symbol": "NIFTYBEES",
+          "transaction_type": "Buy",
+          "quantity": 500,
+          "price": 225.50,
+          "order_value": 112750.00,
+          "order_date": "2024-10-28",
+          "status": "Executed"
+        }
+      ],
+      "watchlist": [
+        {"symbol": "NIFTY50", "ltp": 23850.25, "change": 125.50, "change_percent": 0.53},
+        {"symbol": "SENSEX", "ltp": 78950.75, "change": -89.25, "change_percent": -0.11}
+      ]
+    },
+    {
+      "customer_id": "GTT-003",
+      "personal_info": {
+        "first_name": "Kiran",
+        "last_name": "Rao",
+        "date_of_birth": "1979-12-03",
+        "phone": "+91-7654321089",
+        "email": "kiran.rao@rediffmail.com",
+        "address": {
+          "line1": "301, Sea View Apartments",
+          "line2": "Marine Drive",
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "pincode": "400002"
+        },
+        "pan_number": "KLMNO3333P",
+        "aadhar_number": "3333-3333-3333"
+      },
+      "trading_account": {
+        "account_number": "GTT456789012",
+        "account_type": "Demat + Trading + F&O",
+        "opening_date": "2018-04-10",
+        "status": "Active",
+        "demat_account": "IN301456789012345678",
+        "trading_segment": ["Equity", "F&O", "Currency"],
+        "available_balance": 750000.50,
+        "margin_available": 350000.00
+      },
+      "portfolio": {
+        "total_value": 2850000.75,
+        "invested_amount": 2100000.00,
+        "current_pnl": 750000.75,
+        "unrealized_pnl": 125000.25,
+        "realized_pnl": 625000.50,
+        "holdings": [
+          {
+            "symbol": "ADANIPORTS",
+            "company_name": "Adani Ports & Special Economic Zone Ltd",
+            "quantity": 200,
+            "avg_price": 1250.00,
+            "current_price": 1485.75,
+            "invested_value": 250000.00,
+            "current_value": 297150.00,
+            "pnl": 47150.00,
+            "pnl_percentage": 18.86
+          },
+          {
+            "symbol": "BHARTIARTL",
+            "company_name": "Bharti Airtel Ltd",
+            "quantity": 300,
+            "avg_price": 950.00,
+            "current_price": 1125.50,
+            "invested_value": 285000.00,
+            "current_value": 337650.00,
+            "pnl": 52650.00,
+            "pnl_percentage": 18.47
+          }
+        ]
+      },
+      "mutual_funds": [
+        {
+          "scheme_name": "Mirae Asset Large Cap Fund - Direct Growth",
+          "folio_number": "22222222222",
+          "units": 3500.125,
+          "nav": 95.75,
+          "invested_amount": 300000.00,
+          "current_value": 335137.00,
+          "pnl": 35137.00,
+          "sip_amount": 15000,
+          "sip_date": 25,
+          "sip_status": "Active"
+        }
+      ],
+      "trading_history": [
+        {
+          "order_id": "GTT-ORD-004",
+          "symbol": "NIFTY24NOV23500CE",
+          "transaction_type": "Buy",
+          "quantity": 50,
+          "price": 125.50,
+          "order_value": 6275.00,
+          "order_date": "2024-11-04",
+          "status": "Executed",
+          "product_type": "Options"
+        }
+      ],
+      "watchlist": [
+        {"symbol": "BANKNIFTY", "ltp": 51250.75, "change": 285.50, "change_percent": 0.56},
+        {"symbol": "NIFTYIT", "ltp": 42850.25, "change": -125.75, "change_percent": -0.29}
+      ]
+    },
+    {
+      "customer_id": "GTT-004",
+      "personal_info": {
+        "first_name": "Aditi",
+        "last_name": "Malhotra",
+        "date_of_birth": "1995-02-28",
+        "phone": "+91-6543210978",
+        "email": "aditi.malhotra@gmail.com",
+        "address": {
+          "line1": "B-15, New Colony",
+          "line2": "Rajouri Garden",
+          "city": "Delhi",
+          "state": "Delhi",
+          "pincode": "110027"
+        },
+        "pan_number": "PQRST4444U",
+        "aadhar_number": "4444-4444-4444"
+      },
+      "trading_account": {
+        "account_number": "GTT789012345",
+        "account_type": "Demat + Trading",
+        "opening_date": "2023-09-15",
+        "status": "Active",
+        "demat_account": "IN301789012345678901",
+        "trading_segment": ["Equity"],
+        "available_balance": 85000.25,
+        "margin_available": 0.00
+      },
+      "portfolio": {
+        "total_value": 165000.50,
+        "invested_amount": 140000.00,
+        "current_pnl": 25000.50,
+        "unrealized_pnl": 8500.25,
+        "realized_pnl": 16500.25,
+        "holdings": [
+          {
+            "symbol": "TATASTEEL",
+            "company_name": "Tata Steel Ltd",
+            "quantity": 150,
+            "avg_price": 125.00,
+            "current_price": 142.75,
+            "invested_value": 18750.00,
+            "current_value": 21412.50,
+            "pnl": 2662.50,
+            "pnl_percentage": 14.20
+          },
+          {
+            "symbol": "ITC",
+            "company_name": "ITC Ltd",
+            "quantity": 200,
+            "avg_price": 485.00,
+            "current_price": 525.25,
+            "invested_value": 97000.00,
+            "current_value": 105050.00,
+            "pnl": 8050.00,
+            "pnl_percentage": 8.30
+          }
+        ]
+      },
+      "mutual_funds": [
+        {
+          "scheme_name": "UTI Nifty Next 50 Index Fund - Direct Growth",
+          "folio_number": "33333333333",
+          "units": 850.256,
+          "nav": 52.25,
+          "invested_amount": 40000.00,
+          "current_value": 44425.87,
+          "pnl": 4425.87,
+          "sip_amount": 2000,
+          "sip_date": 20,
+          "sip_status": "Active"
+        }
+      ],
+      "trading_history": [
+        {
+          "order_id": "GTT-ORD-005",
+          "symbol": "HCLTECH",
+          "transaction_type": "Buy",
+          "quantity": 25,
+          "price": 1850.00,
+          "order_value": 46250.00,
+          "order_date": "2024-10-30",
+          "status": "Executed"
+        }
+      ],
+      "watchlist": [
+        {"symbol": "TECHM", "ltp": 1685.25, "change": 25.50, "change_percent": 1.54},
+        {"symbol": "COALINDIA", "ltp": 485.75, "change": -8.25, "change_percent": -1.67}
+      ]
+    },
+    {
+      "customer_id": "GTT-005",
+      "personal_info": {
+        "first_name": "Manoj",
+        "last_name": "Tiwari",
+        "date_of_birth": "1988-10-14",
+        "phone": "+91-5432109867",
+        "email": "manoj.tiwari@hotmail.com",
+        "address": {
+          "line1": "A-204, Shanti Niketan",
+          "line2": "Varanasi",
+          "city": "Varanasi",
+          "state": "Uttar Pradesh",
+          "pincode": "221005"
+        },
+        "pan_number": "UVWXY5555Z",
+        "aadhar_number": "5555-5555-5555"
+      },
+      "trading_account": {
+        "account_number": "GTT012345678",
+        "account_type": "Demat + Trading",
+        "opening_date": "2022-12-05",
+        "status": "Active",
+        "demat_account": "IN301012345678901234",
+        "trading_segment": ["Equity", "ETF"],
+        "available_balance": 45000.00,
+        "margin_available": 0.00
+      },
+      "portfolio": {
+        "total_value": 95000.25,
+        "invested_amount": 80000.00,
+        "current_pnl": 15000.25,
+        "unrealized_pnl": 3500.50,
+        "realized_pnl": 11500.75,
+        "holdings": [
+          {
+            "symbol": "BAJAJ-AUTO",
+            "company_name": "Bajaj Auto Ltd",
+            "quantity": 10,
+            "avg_price": 6500.00,
+            "current_price": 7125.50,
+            "invested_value": 65000.00,
+            "current_value": 71255.00,
+            "pnl": 6255.00,
+            "pnl_percentage": 9.62
+          }
+        ]
+      },
+      "mutual_funds": [
+        {
+          "scheme_name": "ICICI Prudential Bluechip Fund - Direct Growth",
+          "folio_number": "44444444444",
+          "units": 550.123,
+          "nav": 72.50,
+          "invested_amount": 35000.00,
+          "current_value": 39883.92,
+          "pnl": 4883.92,
+          "sip_amount": 1500,
+          "sip_date": 12,
+          "sip_status": "Active"
+        }
+      ],
+      "trading_history": [
+        {
+          "order_id": "GTT-ORD-006",
+          "symbol": "SUNPHARMA",
+          "transaction_type": "Buy",
+          "quantity": 20,
+          "price": 1750.00,
+          "order_value": 35000.00,
+          "order_date": "2024-10-25",
+          "status": "Executed"
+        }
+      ],
+      "watchlist": [
+        {"symbol": "DRREDDY", "ltp": 6250.75, "change": 85.25, "change_percent": 1.38},
+        {"symbol": "CIPLA", "ltp": 1485.50, "change": -12.75, "change_percent": -0.85}
+      ]
+    }
+  ]
+}

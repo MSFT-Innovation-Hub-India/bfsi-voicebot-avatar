@@ -1,351 +1,378 @@
-# Voice Live AI Contact Center# Voice Agent with Avatar - Complete Project Structure
-
-
-
-A modern AI-powered contact center application using Azure Voice Live with real-time audio and avatar capabilities.This project provides a complete voice agent application with avatar support using Azure Voice Live API.
-
-
-
-## Features## Project Structure
-
-
-
-- 🎙️ Real-time voice conversation with AI```
-
-- 👤 Animated avatar supportvoiceagent/
-
-- 💬 Text and voice input├── voiceagent.py              # Original voice agent with avatar (terminal)
-
-- 📊 Live transcription for both user and assistant├── voiceagent_audio_only.py   # Audio-only version (terminal)
-
-- 🔄 WebRTC integration for video streaming├── test_avatar_batch.py       # Avatar testing script
-
-- 🎨 Modern, responsive UI├── requirements.txt           # Python dependencies
-
-├── backend/                   # FastAPI backend for web interface
-
-## Prerequisites│   ├── main.py               # FastAPI server with REST & WebSocket APIs
-
-│   ├── session_manager.py    # Voice Live session management
-
-- Python 3.8+│   └── voice_live_client.py  # Azure Voice Live client wrapper
-
-- Node.js 16+└── frontend/                 # React TypeScript frontend
-
-- Azure subscription with Voice Live access    ├── src/
-
-- Azure credentials configured (DefaultAzureCredential)    │   ├── App.tsx           # Main React component
-
-    │   ├── App.css           # Styling
-
-## Setup    │   ├── main.tsx          # React entry point
-
-    │   └── index.css         # Global styles
-
-### 1. Clone the repository    ├── index.html            # HTML template
-
-    ├── package.json          # Node.js dependencies
-
-```bash    ├── vite.config.ts        # Vite build configuration
-
-git clone <your-repo-url>    ├── tsconfig.json         # TypeScript configuration
-
-cd voiceagent    └── tsconfig.node.json    # TypeScript config for build tools
-
-``````
-
-
-
-### 2. Configure environment variables## Features
-
-
-
-Copy the example environment file and fill in your Azure credentials:### 1. Terminal Voice Agent (`voiceagent.py`)
-
-- **Full avatar support** with Lisa character (casual-sitting style)
-
-```bash- **Audio delivered via WebRTC** (not directly in terminal)
-
-cp .env.example .env- **Real-time conversation** with Azure Voice Live API
-
-```- **Enhanced event logging** for debugging
-
-
-
-Edit `.env` and add your Azure Voice Live configuration:### 2. Audio-Only Version (`voiceagent_audio_only.py`)
-
-- **Direct audio playback** in terminal
-
-```env- **Reliable voice conversations** without avatar complexity
-
-AZURE_VOICE_LIVE_ENDPOINT=https://your-endpoint.cognitiveservices.azure.com/- **WebSocket audio streaming**
-
-AZURE_VOICE_LIVE_AGENT_ID=your_agent_id- **Immediate testing capability**
-
-AZURE_VOICE_LIVE_AGENT_CONNECTION_STRING=region.api.azureml.ms;workspace-id;resource-group;project-name
-
-# ... (see .env.example for all required variables)### 3. Web Application
-
-```- **FastAPI backend** with session management
-
-- **React frontend** with avatar video display
-
-### 3. Install Python dependencies- **WebRTC integration** for avatar video streams
-
-- **Real-time audio and text communication**
-
-```bash- **Modern responsive UI**
-
-pip install -r requirements.txt
-
-```## Setup Instructions
-
-
-
-### 4. Install frontend dependencies### Prerequisites
-
-- Python 3.8+
-
-```bash- Node.js 18+
-
-cd frontend- Azure Cognitive Services account
-
-npm install- Azure Voice Live API access
-
-cd ..
-
-```### Backend Setup
-
-
-
-### 5. Run the application1. **Install Python dependencies:**
-
-```bash
-
-**Option 1: Simple script (recommended for testing)**pip install -r requirements.txt
+# Voice Live AI Contact Center Agent
+
+A modern, production-ready AI-powered contact center application built with Azure Voice Live API, featuring real-time voice conversations, sentiment analysis, call analytics, and comprehensive multi-industry support.
+
+## Overview
+
+This application provides an intelligent voice agent platform designed for contact centers across multiple industries including banking, insurance, and trading. It combines Azure's Voice Live API with real-time sentiment analysis, call summarization, and analytics generation to deliver exceptional customer service experiences.
+
+## Key Features
+
+### 🎙️ Real-Time Voice Conversation
+- Natural voice interactions powered by Azure Voice Live API
+- WebSocket-based audio streaming for low-latency communication
+- Support for multiple Azure TTS voices
+- Automatic audio transcription for both user and assistant
+
+### 📊 Advanced Analytics
+- **Real-time sentiment analysis** using DistilBERT-based models
+- **Emotion detection** with emoji indicators (😊 😐 😢)
+- **Call summarization** with Azure OpenAI GPT-4o-mini integration
+- **Call analytics generation** including key metrics, insights, and recommendations
+- Sentiment history tracking throughout conversations
+
+### 👤 Multi-Industry Support
+Pre-configured customer databases and use cases for:
+- **Banking** - Account inquiries, transactions, credit cards
+- **Insurance** - Auto, life, and general insurance policies
+- **Trading** - Investment portfolios, market insights, fund allocation
+
+### 🎨 Modern Web Interface
+- React + TypeScript frontend with Vite
+- Real-time WebSocket communication
+- Animated UI components with smooth transitions
+- Action modal system for email, transfers, and session management
+- Voice waveform visualization
+- Live sentiment indicators and conversation history
+- Session duration tracking and metrics display
+
+### 🔧 Flexible Configuration
+- Dynamic agent configuration via REST API
+- Support for custom instructions and context
+- Multiple model options (GPT-4o, GPT-4o-mini)
+- Configurable customer data sources
+- Environment-based configuration management
+
+## Project Structure
 
 ```
+voiceliveagent/
+├── backend/                          # FastAPI backend server
+│   ├── main.py                       # FastAPI app with REST & WebSocket APIs
+│   ├── voice_live_client.py          # Azure Voice Live client wrapper
+│   ├── session_manager.py            # Session lifecycle management
+│   ├── sentiment_analyzer.py         # Real-time sentiment & emotion analysis
+│   ├── summarizer.py                 # Call summarization with GPT-4o-mini
+│   ├── call_analytics.py             # Analytics generation from summaries
+│   ├── customer_lookup.py            # Customer data management
+│   ├── test_analytics.py             # Analytics testing script
+│   ├── test_summarizer.py            # Summarizer testing script
+│   └── data/                         # Customer databases (JSON)
+│       ├── bank_customers.json
+│       ├── auto_insurance_customers.json
+│       ├── life_insurance_customers.json
+│       ├── general_insurance_customers.json
+│       └── trade_customers.json
+│
+├── frontend/                         # React TypeScript frontend
+│   ├── src/
+│   │   ├── App.tsx                   # Main application component
+│   │   ├── App.css                   # Application styles
+│   │   ├── main.tsx                  # React entry point
+│   │   ├── index.css                 # Global styles
+│   │   └── components/               # Reusable UI components
+│   │       ├── ActionModal.tsx       # Action confirmation modal
+│   │       ├── EmailAnimation.tsx    # Email sending animation
+│   │       ├── HumanTransferAnimation.tsx  # Transfer animation
+│   │       ├── SessionInitAnimation.tsx    # Session start animation
+│   │       └── VoiceWaveform.tsx     # Voice activity visualization
+│   ├── public/
+│   │   └── customer-images/          # Customer profile images
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.ts
+│   ├── tsconfig.json
+│   └── tsconfig.node.json
+│
+├── instructions.txt                  # Agent instructions template
+├── bank-use-case.txt                 # Banking scenario documentation
+├── insurance-use-case.txt            # Insurance scenario documentation
+├── trade-use-case.txt                # Trading scenario documentation
+├── call-history-bank.txt             # Sample bank call history
+├── call-history-insurance.txt        # Sample insurance call history
+├── requirements.txt                  # Python dependencies
+├── package.json                      # Node.js dependencies
+└── README.md                         # This file
+```
 
-```bash
+## Prerequisites
 
-python voiceagent.py2. **Configure environment variables:**
+- **Python 3.8+** with pip
+- **Node.js 18+** with npm
+- **Azure subscription** with Voice Live API access
+- **Azure AI Projects** workspace configured
+- **Azure OpenAI** deployment (GPT-4o or GPT-4o-mini)
 
-```Create a `.env` file with your Azure credentials:
+## Setup Instructions
+
+
+
+### 1. Configure Environment Variables
+
+Create a `.env` file in the project root with your Azure credentials:
 
 ```env
-
-This will start both the backend server and frontend development server.AZURE_VOICE_LIVE_ENDPOINT=https://your-endpoint.cognitiveservices.azure.com/
-
+# Azure Voice Live Configuration
+AZURE_VOICE_LIVE_ENDPOINT=https://your-endpoint.cognitiveservices.azure.com/
 AZURE_VOICE_LIVE_AGENT_ID=your-agent-id
-
-**Option 2: Manual setup**AZURE_VOICE_LIVE_AGENT_CONNECTION_STRING=your-connection-string
-
+AZURE_VOICE_LIVE_AGENT_CONNECTION_STRING=region.api.azureml.ms;workspace-id;resource-group;project-name
 AZURE_VOICE_LIVE_API_VERSION=2025-10-01
 
-Start the backend server:AZURE_TTS_VOICE=en-IN-AartiIndicNeural
+# Azure OpenAI Configuration (for summarization and analytics)
+AZURE_OPENAI_ENDPOINT=https://your-openai.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-api-key
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o-mini
+AZURE_OPENAI_API_VERSION=2024-08-01-preview
 
-```bashAZURE_VOICE_AVATAR_CHARACTER=lisa
+# TTS Voice Configuration
+AZURE_TTS_VOICE=en-IN-AartiIndicNeural
 
-cd backendAZURE_VOICE_AVATAR_STYLE=casual-sitting
-
-uvicorn main:app --host 0.0.0.0 --port 3000 --reload```
-
+# Azure AI Project Configuration
+AZURE_AI_PROJECT_CONNECTION_STRING=your-connection-string
 ```
 
-3. **Run the FastAPI backend:**
-
-In a separate terminal, start the frontend:```bash
-
-```bashcd backend
-
-cd frontendpython -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-
-npm run dev```
-
-```
-
-### Frontend Setup
-
-## Usage
-
-1. **Install Node.js dependencies:**
-
-1. Open your browser to `http://localhost:5173` (or the URL shown by Vite)```bash
-
-2. Click "Start Session" to initialize the connectioncd frontend
-
-3. Click "Connect Avatar" to enable video avatarnpm install
-
-4. Use the microphone button to speak or type messages in the text input```
-
-5. View real-time transcriptions and conversation history
-
-2. **Start the development server:**
-
-## Project Structure```bash
-
-npm start
-
-``````
-
-voiceagent/
-
-├── backend/The frontend will be available at `http://localhost:3000`
-
-│   ├── main.py                 # FastAPI server
-
-│   ├── voice_live_client.py   # Azure Voice Live client### Terminal Testing
-
-│   └── session_manager.py     # Session management
-
-├── frontend/1. **Test avatar configuration:**
-
-│   ├── src/```bash
-
-│   │   ├── App.tsx            # Main React componentpython test_avatar_batch.py
-
-│   │   └── App.css            # Styling```
-
-│   └── package.json
-
-├── voiceagent.py              # Simple launcher script2. **Test audio-only conversation:**
-
-├── requirements.txt           # Python dependencies```bash
-
-└── .env.example              # Environment templatepython voiceagent_audio_only.py
-
-``````
-
-
-
-## Environment Variables3. **Test full avatar version:**
+### 2. Install Backend Dependencies
 
 ```bash
+pip install -r requirements.txt
+```
 
-| Variable | Description | Required |python voiceagent.py
+Required Python packages include:
+- `fastapi` - Web framework
+- `uvicorn` - ASGI server
+- `websockets` - WebSocket client/server
+- `azure-identity` - Azure authentication
+- `azure-ai-projects` - Azure AI SDK
+- `transformers` - Sentiment analysis models
+- `torch` - Deep learning framework
+- `python-dotenv` - Environment management
 
-|----------|-------------|----------|```
+### 3. Install Frontend Dependencies
 
-| `AZURE_VOICE_LIVE_ENDPOINT` | Azure Voice Live endpoint URL | Yes |
+```bash
+cd frontend
+npm install
+cd ..
+```
 
-| `AZURE_VOICE_LIVE_AGENT_ID` | Your agent ID | Yes |## Usage
+### 4. Download Sentiment Analysis Models
 
-| `AZURE_VOICE_LIVE_AGENT_CONNECTION_STRING` | Agent connection string | Yes |
+The sentiment analyzer will automatically download required models on first run:
+- `distilbert-base-uncased-finetuned-sst-2-english` (sentiment)
+- `bhadresh-savani/distilbert-base-uncased-emotion` (emotion)
 
-| `AZURE_VOICE_LIVE_API_VERSION` | API version (e.g., 2025-10-01) | Yes |### Web Application
+## Running the Application
 
-| `AZURE_TTS_VOICE` | Azure TTS voice name | Yes |1. Open `http://localhost:3000` in your browser
+### Option 1: Development Mode (Recommended)
 
-| `AZURE_VOICE_AVATAR_CHARACTER` | Avatar character name | Yes |2. Click "Start Session" to initialize the voice agent
+**Start the backend server:**
 
-| `AZURE_VOICE_AVATAR_STYLE` | Avatar style | Yes |3. Click "Connect Avatar" to establish WebRTC video connection
+```bash
+cd backend
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
 
-| `AZURE_VOICE_AVATAR_WIDTH` | Video width in pixels | Yes |4. Use the microphone button to talk or type messages
+**In a separate terminal, start the frontend:**
 
-| `AZURE_VOICE_AVATAR_HEIGHT` | Video height in pixels | Yes |5. Watch the avatar respond with synchronized video and audio
+```bash
+cd frontend
+npm run dev
+```
 
-| `AZURE_VOICE_AVATAR_BITRATE` | Video bitrate | Yes |
+The application will be available at `http://localhost:5173`
 
-| `AZURE_VOICE_AVATAR_ICE_URLS` | Custom ICE servers (optional) | No |### Terminal Application
+### Option 2: Production Mode
 
-1. Run `python voiceagent_audio_only.py` for reliable voice chat
+**Build the frontend:**
 
-## Authentication2. Run `python voiceagent.py` for avatar-enabled session (requires WebRTC frontend)
+```bash
+cd frontend
+npm run build
+cd ..
+```
 
-3. Press 'q' and Enter to quit
+**Run the backend with production settings:**
+
+```bash
+cd backend
+python -m uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+Access at `http://localhost:8000`
+
+## Usage Guide
+
+### Starting a Conversation
+
+1. Open the web application in your browser
+2. Click **"Start Session"** to initialize a new voice session
+3. Grant microphone permissions when prompted
+4. Click the **microphone button** to start speaking
+5. The AI agent will respond in real-time with voice and text
+
+### Viewing Analytics
+
+1. During or after a conversation, view real-time sentiment indicators
+2. Click **"Show Summary"** to generate a call summary
+3. Click **"Show Analytics"** to view detailed call analytics including:
+   - Call metrics (duration, sentiment, resolution)
+   - Key insights and discussion points
+   - Agent performance evaluation
+   - Recommended follow-up actions
+
+### Managing Customer Context
+
+- The system automatically loads customer data based on the selected industry
+- Customer information is displayed during conversations
+- Support for banking, insurance (auto, life, general), and trading customers
+
+### Configuration Management
+
+- Use the **Settings** panel to customize agent behavior
+- Update instructions, context, and model selection
+- Changes apply to new sessions immediately
+
+### Session Management
+
+- Track session duration in real-time
+- View conversation history with sentiment indicators
+- End session to generate final summary and analytics
+
+## API Endpoints
+
+### REST API
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/session` | POST | Create new voice session |
+| `/api/session/{session_id}` | GET | Get session status |
+| `/api/session/{session_id}/message` | POST | Send text message |
+| `/api/session/{session_id}/config` | PUT | Update session configuration |
+| `/api/session/{session_id}/summary` | POST | Generate call summary |
+| `/api/session/{session_id}/analytics` | GET | Get call analytics |
+| `/api/customers` | GET | List all customers |
+| `/api/customers/{customer_id}` | GET | Get customer details |
+
+### WebSocket API
+
+Connect to `/api/ws/{session_id}` for real-time events:
+
+**Events received:**
+- `session_started` - Session initialization complete
+- `user_speaking` - User audio detected
+- `assistant_speaking` - Assistant is responding
+- `transcription` - Text transcription update
+- `sentiment_update` - Real-time sentiment analysis
+- `session_ended` - Session terminated
+
+**Events sent:**
+- `audio` - Send audio data (base64 encoded)
+- `message` - Send text message
+- `end_session` - Terminate the session
+
+## Testing
+
+### Test Call Summarization
+
+```bash
+cd backend
+python test_summarizer.py
+```
+
+### Test Analytics Generation
+
+```bash
+cd backend
+python test_analytics.py
+```
+
+## Authentication
 
 This application uses `DefaultAzureCredential` from Azure Identity. Make sure you're authenticated using one of:
 
-## Technical Details
-
 - Azure CLI: `az login`
+- Environment variables (AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET)
+- Managed Identity (when deployed to Azure)
 
-- Environment variables (AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET)### Authentication
+## Troubleshooting
 
-- Managed Identity (when deployed to Azure)- Uses `DefaultAzureCredential` for Azure authentication
+### Common Issues
 
-- Requires both `https://ai.azure.com/.default` and `https://ml.azure.com/.default` scopes
+1. **Microphone not working:**
+   - Grant microphone permissions in your browser
+   - Check that no other application is using the microphone
+   - Verify browser supports WebRTC
 
-## Troubleshooting- Automatic token refresh handling
+2. **Session connection fails:**
+   - Verify all environment variables are set correctly
+   - Check Azure credentials are valid
+   - Review backend logs for detailed error messages
+   - Ensure Azure Voice Live API access is enabled
 
+3. **Sentiment analysis errors:**
+   - Models will download automatically on first run
+   - Ensure sufficient disk space for model files (~500MB)
+   - Check internet connection for model downloads
 
+4. **WebSocket disconnections:**
+   - Check network stability
+   - Verify firewall allows WebSocket connections
+   - Review browser console for error messages
 
-### Avatar not connecting### Audio Processing
-
-- Check your ICE server configuration- **24kHz sample rate** for optimal quality
-
-- Verify network connectivity- **Real-time audio streaming** with minimal latency
-
-- Ensure WebRTC is supported in your browser- **Azure Deep Noise Suppression** for clear audio
-
-- **Server Echo Cancellation** for better conversation flow
-
-### Audio not working
-
-- Check microphone permissions in your browser### Avatar Features
-
-- Verify audio device is working- **Lisa character** with casual-sitting style
-
-- Check browser console for errors- **1280x720 resolution** at 2Mbps bitrate
-
-- **WebRTC video streaming** for real-time avatar display
-
-### Session connection fails- **Synchronized lip-sync** with audio response
-
-- Verify all environment variables are set correctly
-
-- Check Azure credentials are valid### API Endpoints
-
-- Review backend logs for detailed error messages- `POST /api/session` - Create new voice session
-
-- `GET /api/session/{session_id}` - Get session status
-
-## License- `POST /api/session/{session_id}/avatar/connect` - Connect avatar via WebRTC
-
-- `POST /api/session/{session_id}/message` - Send text message
-
-MIT- `WebSocket /api/ws/{session_id}` - Real-time event streaming
-
-
-
-## Contributing## Troubleshooting
-
-
-
-Pull requests are welcome! Please ensure all sensitive information is removed before committing.### Common Issues
-
-
-1. **Audio not working in terminal:**
-   - Use `voiceagent_audio_only.py` for direct audio playback
-   - Avatar version requires WebRTC frontend for audio
-
-2. **WebSocket connection failed:**
-   - Check Azure credentials and endpoint configuration
-   - Verify agent ID and connection string are correct
-
-3. **Avatar not connecting:**
-   - Ensure WebRTC is supported in your browser
-   - Check firewall settings for UDP traffic
-
-4. **No microphone access:**
-   - Grant microphone permissions in browser
-   - Check microphone is not being used by another application
+5. **Analytics not generating:**
+   - Ensure Azure OpenAI endpoint is configured
+   - Check API key and deployment name
+   - Verify sufficient quota in Azure OpenAI
 
 ### Debug Mode
-Add verbose logging for troubleshooting:
+
+Enable verbose logging for troubleshooting:
+
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
+## Architecture
+
+### Backend Components
+
+- **FastAPI Server** - REST and WebSocket APIs
+- **Voice Live Client** - Azure Voice Live integration
+- **Session Manager** - Session lifecycle and state management
+- **Sentiment Analyzer** - Real-time emotion and sentiment detection
+- **Summarizer** - Call summary generation
+- **Call Analytics** - Post-call insights and metrics
+- **Customer Lookup** - Multi-industry customer data management
+
+### Frontend Components
+
+- **React + TypeScript** - Modern UI framework
+- **Vite** - Fast build tooling
+- **WebSocket Client** - Real-time communication
+- **Audio Processing** - Microphone input and playback
+- **Animated Components** - Enhanced user experience
+
+### Data Flow
+
+1. User speaks → Microphone captures audio
+2. Audio streamed via WebSocket → Backend
+3. Backend forwards to Azure Voice Live → AI processing
+4. Voice Live returns response → Backend
+5. Sentiment analysis performed → Real-time updates
+6. Response streamed to frontend → User hears/sees reply
+7. End of call → Summary and analytics generated
+
 ## Development
 
 ### Adding New Features
-1. Backend changes go in `backend/main.py` or `session_manager.py`
-2. Frontend changes go in `frontend/src/App.tsx`
+
+1. Backend changes go in `backend/main.py` or respective modules
+2. Frontend changes go in `frontend/src/App.tsx` or components
 3. Voice agent logic updates go in `voice_live_client.py`
 
 ### Building for Production
+
 ```bash
 # Build frontend
 cd frontend
@@ -356,6 +383,36 @@ pip install gunicorn
 gunicorn backend.main:app -w 4 -k uvicorn.workers.UvicornWorker
 ```
 
+### Code Style
+
+- Python: Follow PEP 8 guidelines
+- TypeScript: Use ESLint configuration
+- Components: Functional components with hooks
+
+## Contributing
+
+Pull requests are welcome! Please ensure:
+- All sensitive information is removed before committing
+- Code follows existing style conventions
+- Tests pass successfully
+- Documentation is updated
+
 ## License
 
 This project is for educational and development purposes. Please ensure compliance with Azure service terms and conditions.
+
+## Support
+
+For issues and questions:
+- Check the troubleshooting section
+- Review Azure Voice Live documentation
+- Open an issue on GitHub
+
+## Acknowledgments
+
+Built with:
+- Azure Voice Live API
+- Azure OpenAI Service
+- React and TypeScript
+- FastAPI
+- Hugging Face Transformers
