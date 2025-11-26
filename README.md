@@ -46,7 +46,7 @@ Pre-configured customer databases and use cases for:
 ## Project Structure
 
 ```
-voiceliveagent/
+bfsi-voicebot-avatar/
 ├── backend/                          # FastAPI backend server
 │   ├── main.py                       # FastAPI app with REST & WebSocket APIs
 │   ├── voice_live_client.py          # Azure Voice Live client wrapper
@@ -84,14 +84,25 @@ voiceliveagent/
 │   ├── tsconfig.json
 │   └── tsconfig.node.json
 │
-├── instructions.txt                  # Agent instructions template
-├── bank-use-case.txt                 # Banking scenario documentation
-├── insurance-use-case.txt            # Insurance scenario documentation
-├── trade-use-case.txt                # Trading scenario documentation
-├── call-history-bank.txt             # Sample bank call history
-├── call-history-insurance.txt        # Sample insurance call history
+├── Instructions/                     # Agent instruction files
+│   ├── default.txt                   # Default agent instructions
+│   ├── bank-use-case.txt             # Banking scenario documentation
+│   ├── insurance-use-case.txt        # Insurance scenario documentation
+│   ├── trade-use-case.xt             # Trading scenario documentation
+│   ├── trade-use-case-2.txt          # Additional trading scenario
+│   ├── trade-use-case-3.txt          # Additional trading scenario
+│   └── Sample_instruction.txt        # Sample instruction template
+│
+├── Call History/                     # Sample call history logs
+│   ├── call-history-bank.txt         # Sample bank call history
+│   └── call-history-insurance.txt    # Sample insurance call history
+│
+├── .env.example                      # Environment variables template
+├── .gitignore                        # Git ignore rules
+├── frontendvisualizationtemplate.html # Frontend visualization template
 ├── requirements.txt                  # Python dependencies
 ├── package.json                      # Node.js dependencies
+├── package-lock.json                 # Node.js dependency lock file
 └── README.md                         # This file
 ```
 
