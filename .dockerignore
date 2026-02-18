@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Node modules (frontend deps installed in Docker)
+frontend/node_modules
+node_modules
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+backend/__pycache__
+
+# Environment files (injected via Azure Container Apps config)
+.env
+
+# IDE & OS files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+frontend/dist
+static/
+
+# Documentation (not needed in container)
+README.md
+
+# Lock files at root level
+package-lock.json
